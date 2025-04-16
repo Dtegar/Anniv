@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Anniversary</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        .floating {
+            animation: floating 3s ease-in-out infinite;
+        }
+        @keyframes floating {
+            0% { transform: translate(0, 0px); }
+            50% { transform: translate(0, 15px); }
+            100% { transform: translate(0, 0px); }
+        }
+        .heart {
+            position: fixed;
+            animation: fall linear forwards;
+        }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+    </style>
+</head>
+<body class="bg-sky-50 min-h-screen flex items-center justify-center">
+    <!-- Name Input Section -->
+    <div id="nameInput" class="text-center p-8 rounded-lg bg-white shadow-lg max-w-md mx-auto">
+        <h2 class="text-3xl font-bold text-sky-600 mb-6">Welcome</h2>
+        <input type="text" id="nameField" placeholder="Enter your name" 
+               class="w-full px-4 py-2 rounded-lg border border-sky-200 focus:outline-none focus:border-sky-400">
+        <button onclick="checkName()" 
+                class="mt-4 px-6 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition duration-300">
+            Enter
+        </button>
+    </div>
+
+    <!-- Anniversary Message Section (Hidden initially) -->
+    <div id="anniversaryContent" class="hidden text-center">
+        <div class="max-w-2xl mx-auto p-8">
+            <h1 class="text-4xl font-bold text-sky-600 mb-6 floating">Happy Anniversary Sayang</h1>
+            <h2 class="text-2xl text-sky-500 mb-4">Siti Nur Faizah</h2>
+            <p class="text-lg text-sky-700 leading-relaxed mb-6">
+                Selalu bareng selamannya yaa, tanpa ada tanggal kedaluwarsa yang menjadi titik akhir.
+                Ayo kita wujudkan semua dream wishlist itu dan mengukir moment-moment bersama.
+                
+            </p>
+            <div class="text-3xl mb-6">❤️</div>
+            <p class="text-sky-600 italic">"Forever grateful for your love"</p>
+            <p class="text-sky-600 italic">"_________ 17-04-2025 _________"</p>
+        </div>
+    </div>
+
+    <script>
+        const correctName = "Siti Nur Faizah";
+
+        function checkName() {
+            const inputName = document.getElementById('nameField').value;
+            if (inputName === correctName) {
+                showAnniversaryContent();
+            } else {
+                alert("Sorry, this message is only for someone special ❤️");
+            }
+        }
+
+        function showAnniversaryContent() {
+            document.getElementById('nameInput').classList.add('hidden');
+            document.getElementById('anniversaryContent').classList.remove('hidden');
+            createHearts();
+            animateContent();
+        }
+
+        function createHearts() {
+            setInterval(() => {
+                const heart = document.createElement('div');
+                heart.innerHTML = '❤️';
+                heart.classList.add('heart');
+                heart.style.left = Math.random() * 100 + 'vw';
+                heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+                heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+                document.body.appendChild(heart);
+                setTimeout(() => heart.remove(), 5000);
+            }, 300);
+        }
+
+        function animateContent() {
+            gsap.from("#anniversaryContent", {
+                duration: 1,
+                opacity: 0,
+                y: 50,
+                ease: "power2.out"
+            });
+        }
+    </script>
+</body>
+</html>
