@@ -6,6 +6,8 @@
     <title>Happy Anniversary</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <style>
         .floating {
             animation: floating 3s ease-in-out infinite;
@@ -24,42 +26,204 @@
                 transform: translateY(100vh);
             }
         }
+        .photo-card {
+            transition: transform 0.3s ease;
+        }
+        .photo-card:hover {
+            transform: translateY(-10px);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
     </style>
 </head>
-<body class="bg-sky-50 min-h-screen flex items-center justify-center">
+<body class="bg-gradient-to-br from-rose-50 to-sky-50 min-h-screen">
     <!-- Name Input Section -->
-    <div id="nameInput" class="text-center p-8 rounded-lg bg-white shadow-lg max-w-md mx-auto">
-        <h2 class="text-3xl font-bold text-sky-600 mb-6">Nama Lengkap Kamu</h2>
+    <div id="nameInput" class="text-center p-8 rounded-2xl bg-white/80 backdrop-blur-sm shadow-lg max-w-md mx-auto mt-20">
+        <h2 class="text-3xl font-bold text-rose-400 mb-6">Welcome</h2>
         <input type="text" id="nameField" placeholder="Enter your name" 
-               class="w-full px-4 py-2 rounded-lg border border-sky-200 focus:outline-none focus:border-sky-400">
+               class="w-full px-4 py-2 rounded-lg border border-rose-200 focus:outline-none focus:border-rose-400 bg-white/50">
         <button onclick="checkName()" 
-                class="mt-4 px-6 py-2 bg-sky-500 text-white rounded-lg hover:bg-sky-600 transition duration-300">
-            Login
+                class="mt-4 px-6 py-2 bg-rose-400 text-white rounded-lg hover:bg-rose-500 transition duration-300 shadow-md hover:shadow-lg transform hover:-translate-y-1">
+            Enter
         </button>
     </div>
 
     <!-- Anniversary Message Section (Hidden initially) -->
-    <div id="anniversaryContent" class="hidden text-center">
-        <div class="max-w-2xl mx-auto p-8">
-            <h1 class="text-4xl font-bold text-sky-600 mb-6 floating">Happy Anniversary Sayang</h1>
-            <h2 class="text-2xl text-sky-500 mb-4">Siti Nur Faizah</h2>
-            <p class="text-lg text-sky-700 leading-relaxed mb-6">
-                Selalu bareng selamannya yaa, tanpa ada tanggal kedaluwarsa yang menjadi titik akhir.
-                Ayo kita wujudkan semua dream wishlist itu dan mengukir moment-moment bersama.
-                
-            </p>
-            <div class="text-3xl mb-6">❤️</div>
-            <p class="text-sky-600 italic">"Forever grateful for your love"</p>
-            <p class="text-sky-600 italic">"_________ 17-04-2025 _________"</p>
+    <div id="anniversaryContent" class="hidden">
+        <div class="max-w-6xl mx-auto p-8">
+            <h1 class="text-5xl font-bold text-rose-400 mb-6 floating text-center" data-aos="fade-down">Happy Anniversary</h1>
+            <h2 class="text-3xl text-rose-500 mb-4 text-center" data-aos="fade-up">Dear Siti Nur Faizah</h2>
+            
+            <!-- Single Photos Section -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 my-12">
+                <div class="photo-card bg-white p-4 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="path/photo/1752686023696.jpg" alt="Memory 1" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <p class="text-rose-400 text-center">Weekend sunrise mall</p>
+                </div>
+                 <div class="photo-card bg-white p-4 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="path/photo/1752686023828.jpg" alt="Memory 1" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <p class="text-rose-400 text-center">Photoboot prepare moment</p>
+                </div>
+                 <div class="photo-card bg-white p-4 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="path/photo/1752686024006.jpg" alt="Memory 1" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <p class="text-rose-400 text-center">Oh Same</p>
+                </div>
+                 <div class="photo-card bg-white p-4 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="path/photo/1752686024148.jpg" alt="Memory 1" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <p class="text-rose-400 text-center">Peluk erat</p>
+                </div>
+                 <div class="photo-card bg-white p-4 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="path/photo/fotbar-santera-imut-mecucu.jpg" alt="Memory 1" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <p class="text-rose-400 text-center">Santera moment</p>
+                </div>
+                 <div class="photo-card bg-white p-4 rounded-xl shadow-lg" data-aos="fade-up" data-aos-delay="100">
+                    <img src="path/photo/fotbar-santera.jpg" alt="Memory 1" class="w-full h-48 object-cover rounded-lg mb-3">
+                    <p class="text-rose-400 text-center">Bianglala moment</p>
+                </div>
+                <!-- Repeat for 4 more cards with different photos and captions -->
+            </div>
+
+            <h3 class="text-2xl font-bold text-rose-400 mb-6 text-center mt-12" data-aos="fade-up">Our Special Moments in Motion</h3>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12" data-aos="fade-up">
+                <!-- Video Card 1 -->
+                <div class="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="relative pb-[177.78%] overflow-hidden rounded-lg mb-3">
+                        <video 
+                            class="absolute top-0 left-0 w-full h-full object-cover" 
+                            controls
+                            poster="path/to/video1-thumbnail.jpg">
+                            <source src="path/gallery/merawat.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h4 class="text-lg font-semibold text-rose-500 mb-2">Merawat mu adalah tugas & kewajibanku</h4>
+                    <p class="text-rose-400">Momen ketika mengobati mu</p>
+                </div>
+
+                <!-- Video Card 2 -->
+                <div class="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="relative pb-[56.25%] overflow-hidden rounded-lg mb-3">
+                        <video 
+                            class="absolute top-0 left-0 w-full h-full object-cover" 
+                            controls
+                            poster="path/to/video2-thumbnail.jpg">
+                            <source src="path/gallery/photooboth.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h4 class="text-lg font-semibold text-rose-500 mb-2">Photooboth moment</h4>
+
+                    <p class="text-rose-400">Bersama wanita tercintaku</p>
+                </div>
+
+                <div class="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+                    <div class="relative pb-[177.78%] overflow-hidden rounded-lg mb-3">
+                        <video 
+                            class="absolute top-0 left-0 w-full h-full object-cover" 
+                            controls
+                            poster="path/to/video1-thumbnail.jpg">
+                            <source src="path/gallery/momen.mp4" type="video/mp4">
+                            Your browser does not support the video tag.
+                        </video>
+                    </div>
+                    <h4 class="text-lg font-semibold text-rose-500 mb-2">Momen momen bersama</h4>
+                    <p class="text-rose-400">Nostalgia xixi</p>
+                </div>
+            </div>
+
+            <!-- Message Section -->
+            <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-lg mb-12" data-aos="fade-up">
+                <p class="text-lg text-rose-700 leading-relaxed mb-6">
+                    Every 17th is special because it reminds me of the beautiful journey we've shared together. 
+                    Your love makes every moment magical, and I'm grateful to have you in my life.
+                </p>
+                <div class="text-3xl mb-6 text-center">❤️</div>
+                <p class="text-rose-600 italic text-center">"Forever grateful for your love"</p>
+            </div>
+
+            <!-- Photo Gallery Grid -->
+            <h3 class="text-2xl font-bold text-rose-400 mb-6 text-center" data-aos="fade-up">Our Beautiful Memories</h3>
+            <div class="gallery-grid" data-aos="fade-up">
+                <!-- Add 6-8 photos in a grid layout -->
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/1752686023764.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/dtegar-pegang.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/fotbar-santera-mecucu.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/faizah-pegang.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/1752686023914.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/boneka-dikepala.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/1752686023962.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/fotbar-santera-mringis.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/1752686024050.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/fotbar-santera-silau.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/1752686024099.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/gandeng-mulu.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/mam-bakso.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/1752686024236.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/boneka-lihat.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/1752686024284.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/1752686024344.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/1752686024392.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/kocak.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <div class="bg-white p-3 rounded-xl shadow-md hover:shadow-xl transition-all duration-300">
+                    <img src="path/gallery/maskeran.jpg" alt="Gallery 1" class="w-full h-64 object-cover rounded-lg">
+                </div>
+                <!-- Repeat for more gallery items -->
+            </div>
         </div>
     </div>
 
     <script>
-        const correctName = "SITI NUR FAIZAH";
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        const correctName = "Siti Nur Faizah";
 
         function checkName() {
-            const inputName = document.getElementById('nameField').value;
-            if (inputName === correctName) {
+            const inputName = document.getElementById('nameField').value.toLowerCase();
+            if (inputName === correctName.toLowerCase()) {
                 showAnniversaryContent();
             } else {
                 alert("Sorry, this message is only for someone special ❤️");
